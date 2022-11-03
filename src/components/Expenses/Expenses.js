@@ -11,7 +11,7 @@ const Expenses = (props) => {
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
   };
-
+  // js array map 검색해보기
   return (
     <div>
       <Card className="expenses">
@@ -19,6 +19,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        {props.items.map()}
         <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
