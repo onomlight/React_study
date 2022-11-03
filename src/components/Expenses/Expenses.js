@@ -12,6 +12,7 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
   // js array map 검색해보기
+  // 하드코딩 삭제 가능 / 경고메세지 무시하기
   return (
     <div>
       <Card className="expenses">
@@ -19,8 +20,14 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {props.items.map()}
-        <ExpenseItem
+        {props.items.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))}
+        {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
           date={props.items[0].date}
@@ -39,7 +46,7 @@ const Expenses = (props) => {
           title={props.items[3].title}
           amount={props.items[3].amount}
           date={props.items[3].date}
-        />
+        /> */}
       </Card>
     </div>
   );
