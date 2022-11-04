@@ -17,6 +17,18 @@ const Expenses = (props) => {
   });
   // js array map 검색해보기
   // 하드코딩 삭제 가능 / 경고메세지 무시하기
+
+  let expenseContent = <p>No expenses found.</p>;
+  if (filteredExpenses.length > 0) {
+    expenseContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ));
+  }
   return (
     <div>
       <Card className="expenses">
@@ -24,14 +36,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        {expenseContent}
       </Card>
     </div>
   );
